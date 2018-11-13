@@ -1,0 +1,39 @@
+#import turtle module
+from turtle import *
+
+#set turtle speed
+#set values for the parameters
+#set initial position (bring it into center)
+speed(500)
+a=400
+n=4
+penup()
+backward(a/2)
+pendown()
+pensize(3)
+
+
+
+#define koch curve
+def koch(a,n):
+    if n > 0:
+        koch(a/3,n-1)
+        lt(60)
+        koch(a/3,n-1)
+        rt(120)
+        koch(a/3,n-1)
+        lt(60)
+        koch(a/3,n-1)
+    else:
+        fd(a)
+    
+#create function that will make the base triangle and then transformed 
+#into the koch curve as n increases
+def snowflake(a,n):
+    for i in range(3):
+        koch(a,n)
+        rt(120)
+        
+#run the code and start event loop
+snowflake(a,n)
+mainloop()
